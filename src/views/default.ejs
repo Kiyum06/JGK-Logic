@@ -9,25 +9,7 @@
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1><%= title %></h1>
-            <p><%= subtitle %></p>
-        </div>
-
-        <nav>
-            <a href="/login">/login</a>
-            <a href="/register">/registerr</a>
-            <a href="/products">/products</a>
-        </nav>
-
-        <div class="hero-image">
-            <img
-                src="/images/default.webp"
-                alt="Model View Controller Architecture Diagram"
-            />
-        </div>
-    </header>
+   <%- include('partials/header') %>
 
     <main class="container">
         <section class="card">
@@ -44,9 +26,7 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <p>Node + Express MVC Starter</p>
-    </footer>
+    <%- include('partials/footer') %>
 
 </body>
 </html>
