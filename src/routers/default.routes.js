@@ -21,6 +21,6 @@ router.get("/products", (req,res) => {
 
 // route for registers
 router.get("/register", (req,res) => {
-    res.render("registar")
+    res.render("register")
 })
 export default router;
