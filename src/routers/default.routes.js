@@ -9,4 +9,18 @@ router.get("/", (req, res) => {
     });
 });
 
+// route for login
+router.get("/login", (req,res) => {
+    res.render("login")
+})
+
+// route for products
+router.get("/products", (req,res) => {
+    res.render("products")
+})
+
+// route for registers
+router.get("/register", (req,res) => {
+    res.render("registar")
+})
 export default router;
