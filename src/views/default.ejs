@@ -1,52 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-   <%- include('partials/header') %>
+    <%- include("partials/header") %>
 
     <main class="container">
-        <section class="card">
-            <h2>Featured Product</h2>
 
-            <img src="https://placehold.co/300x200" alt="Gymnastics training mat">
+        <section class="landing-hero">
+            <span class="badge">Gymnastics Equipment Store</span>
 
-            <h3>Professional Training Mat</h3>
+            <h1>Professional gear for safer training and stronger performance.</h1>
 
             <p>
-                A durable gymnastics mat designed for tumbling, stretching,
-                floor practice, and safe athlete training.
+                JGK Fitness provides gymnastics mats, balance beams, training bars,
+                grips, chalk, and accessories for athletes, gyms, and training centers.
             </p>
 
-            <p><strong>$89.99</strong></p>
-
-            <a class="button" href="/products">View All Products</a>
-            <a class="button secondary" href="/register">Register</a>
+            <div class="hero-actions">
+                <a class="button" href="/products">Shop Products</a>
+                <a class="button secondary" href="/register">Create Account</a>
+            </div>
         </section>
+
+        <section class="category-section">
+            <h2>Shop by Category</h2>
+
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3>Training Mats</h3>
+                    <p>Durable mats for tumbling, stretching, and floor practice.</p>
+                </div>
+
+                <div class="category-card">
+                    <h3>Balance Beams</h3>
+                    <p>Practice beams for beginner and advanced gymnastics training.</p>
+                </div>
+
+                <div class="category-card">
+                    <h3>Bars & Strength</h3>
+                    <p>Training bars and conditioning tools for skill development.</p>
+                </div>
+
+                <div class="category-card">
+                    <h3>Chalk & Grips</h3>
+                    <p>Accessories that support safer holds and better control.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-wide">
+            <div>
+                <span class="badge">Featured Product</span>
+                <h2>EliteFlex Training Mat</h2>
+                <p class="price">$89.99</p>
+                <p>
+                    A padded gymnastics mat designed for tumbling practice,
+                    floor drills, stretching, and safe landings.
+                </p>
+
+                <div class="details">
+                    <div>
+                        <small>Category</small>
+                        <strong>Mats</strong>
+                    </div>
+                    <div>
+                        <small>Status</small>
+                        <strong>In stock</strong>
+                    </div>
+                    <div>
+                        <small>Use</small>
+                        <strong>Training</strong>
+                    </div>
+                </div>
+
+                <a class="button" href="/products">View Products</a>
+            </div>
+
+            <div class="featured-image">
+                <img src="mat.jpg" alt="Gymnastics training mat">
+            </div>
+        </section>
+
+        <section class="why-section">
+            <h2>Why JGK Fitness?</h2>
+
+            <div class="why-grid">
+                <div class="card">
+                    <h3>Professional Focus</h3>
+                    <p>Our store is built around realistic gymnastics equipment and training needs.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Clean MVC Structure</h3>
+                    <p>The application uses Express, EJS, routes, controllers, and reusable partials.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Ready to Grow</h3>
+                    <p>Future milestones will add authentication, product data, and database features.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- <main class="container">
-        <section class="card">
-            <h2>Resistance bands</h2>
-
-            <p>
-                A resistance band that helps you warm up and avoid injuries and soreness from your workouts!
-            </p>
-
-            <img src="https://placehold.co/300x200" alt="placeholder image">
-
-            <p>$9.99</p>
-
-        </section>
-    </main> -->
-
-    <%- include('partials/footer') %>
+    <%- include("partials/footer") %>
 
 </body>
 </html>
