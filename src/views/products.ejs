@@ -10,10 +10,23 @@
     <%- include('partials/header') %>
 
     <main class="container">
-        <section class="card">
-            <h2>All Products</h2>
-            <p>Product catalog placeholder for gymnastics equipment.</p>
-        </section>
+        <h2>All Products</h2>
+        <!-- loops through all products passed from the controller -->
+        <div class="product-grid">
+            <% products.forEach(product => { %>
+            <!-- Single product card: repeats for each prodcut in the array -->
+                <div class="product-card">
+                    <img src="<%= product.image_path %>" alt="<%= product.name %>">
+                    <div class="product-info">
+                        <h3><%= product.name %></h3>
+                        <p class="price">$<%= product.price %></p>
+                        <span class="category-badge"><%= product.category %></span>
+                        <p class="description"><%= product.description %></p>
+                        <a href="/products/<%= product.id %>" class="btn">View product</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
     </main>
 
     <%- include('partials/footer') %>

@@ -1,4 +1,5 @@
 //place controller functions here...
+import { fetchAllProducts } from "../services/default.service.js";
 export const getHome = (req, res) => {
     res.render("default", {
         title: "JGK Fitness",
@@ -18,8 +19,11 @@ export const getRegister = (req, res) => {
     });
 };
 
-export const getProducts = (req, res) => {
+// awaitng and fetching data...
+export const getProducts = async (req, res) => {
+    const products = await fetchAllProducts();
     res.render("products", {
-        title: "Products"
+        title: "Products",
+        products
     });
 };
