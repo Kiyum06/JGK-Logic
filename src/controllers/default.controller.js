@@ -24,6 +24,7 @@ export const getProducts = async (req, res) => {
     const products = await fetchAllProducts();
     res.render("products", {
         title: "Products",
+        subtitle:"",
         products
     });
 };

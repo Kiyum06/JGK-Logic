@@ -16,7 +16,7 @@
             <% products.forEach(product => { %>
             <!-- Single product card: repeats for each prodcut in the array -->
                 <div class="product-card">
-                    <img src="<%= product.image_path %>" alt="<%= product.name %>">
+                    <img src="<%= product.image_path || 'https://placehold.co/300x200?text=No+Image' %>" alt="<%= product.name %>">
                     <div class="product-info">
                         <h3><%= product.name %></h3>
                         <p class="price">$<%= product.price %></p>
