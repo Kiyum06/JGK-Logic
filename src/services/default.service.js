@@ -1,5 +1,5 @@
 //place service code here...
-import { getAllProducts, getFilteredProducts } from "../model/default.repo.js";
+import { getAllProducts, getFilteredProducts, getProductById } from "../model/default.repo.js";
 
 export const fetchAllProducts = async () => {
     const products = await getAllProducts();
@@ -12,3 +12,7 @@ export const fetchFilteredProducts = async (category, minPrice) => {
 
 };
  
+export const fetchProductById = async (id) => {
+    const product = await getProductById(id);
+    return product;
+};
