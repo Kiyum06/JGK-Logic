@@ -11,8 +11,19 @@
 
     <main class="container">
         <h2>All Products</h2>
+        <div class="filters">
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="Mats">Mats</option>
+                <option value="Balance Beams">Balance Beams</option>
+                <option value="Rings">Rings</option>
+                <option value="Trampolines">Trampolines</option>
+            </select>
+
+            <button id="filterBtn">Filter</button>
+        </div>
         <!-- loops through all products passed from the controller -->
-        <div class="product-grid">
+        <div class="product-grid" id="productGrid">
             <% products.forEach(product => { %>
             <!-- Single product card: repeats for each prodcut in the array -->
                 <div class="product-card">
@@ -30,5 +41,40 @@
     </main>
 
     <%- include('partials/footer') %>
+    
+    <script>
+        document.getElementById("filterBtn").addEventListener("click", async () => {
+
+            const category = document.getElementById("categoryFilter").value;
+
+            const response = await fetch(
+                `/api/products?category=${category}`
+            );
+
+            const result = await response.json();
+
+            const productGrid = document.getElementById("productGrid");
+
+            productGrid.innerHTML = "";
+
+            result.data.forEach(product => {
+
+                productGrid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${product.image_path}" alt="${product.name}">
+
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="price">$${product.price}</p>
+                            <span class="category-badge">${product.category}</span>
+                            <p class="description">${product.description}</p>
+                            <a href="/products/${product.id}" class="btn">View product</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+        });
+    </script>
 </body>
 </html>
