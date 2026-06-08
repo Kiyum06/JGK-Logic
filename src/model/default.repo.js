@@ -24,3 +24,11 @@ export const getFilteredProducts = async (category, minPrice) => {
     return rows;
 };
 
+export const getProductById = async (id) => {
+    const [rows] = await pool.query(
+        "SELECT * FROM products WHERE id = ?",
+        [id]
+    );
+
+    return rows[0];
+};
