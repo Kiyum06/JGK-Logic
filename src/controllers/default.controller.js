@@ -1,5 +1,5 @@
 //place controller functions here...
-import { fetchAllProducts, fetchFilteredProducts } from "../services/default.service.js";
+import { fetchAllProducts, fetchFilteredProducts, fetchProductById } from "../services/default.service.js";
 export const getHome = (req, res) => {
     res.render("default", {
         title: "JGK Fitness",
@@ -48,3 +48,26 @@ export const getProductsApi = async (req, res) => {
         });
     }
 }
+
+export const getProductDetail = async (req, res) => {
+    try {
+        const product = await fetchProductById(req.params.id);
+
+        if (!product) {
+            return res.status(404).render("product-detail", {
+                title: "Product Not Found",
+                subtitle: "",
+                product: null
+            });
+        }
+
+        res.render("product-detail", {
+            title: product.name,
+            subtitle: "Product Details",
+            product
+        });
+
+    } catch (error) {
+        res.status(500).send("Something went wrong loading this product.");
+    }
+};
