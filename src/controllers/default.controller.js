@@ -1,5 +1,5 @@
 //place controller functions here...
-import { fetchAllProducts } from "../services/default.service.js";
+import { fetchAllProducts, fetchFilteredProducts } from "../services/default.service.js";
 export const getHome = (req, res) => {
     res.render("default", {
         title: "JGK Fitness",
@@ -30,19 +30,21 @@ export const getProducts = async (req, res) => {
 };
 
 export const getProductsApi = async (req, res) => {
-try {
-    const products = await fetchAllProducts();
+    try {
+        const {category, minPrice } = req.query;
 
-    res.status(200).json({
-        success: true,
-        count: products.length,
-        data: products
-    });
-} catch (error) {
-    res.status(500).json({
-        success: false,
-        message: "Failed to load products"
-    });
+        const products = await fetchFilteredProducts(category, minPrice);
+
+        res.status(200).json({
+            success: true,
+            count: products.length,
+            data: products
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to load products"
+
+        });
+    }
 }
-
-};
