@@ -28,3 +28,21 @@ export const getProducts = async (req, res) => {
         products
     });
 };
+
+export const getProductsApi = async (req, res) => {
+try {
+    const products = await fetchAllProducts();
+
+    res.status(200).json({
+        success: true,
+        count: products.length,
+        data: products
+    });
+} catch (error) {
+    res.status(500).json({
+        success: false,
+        message: "Failed to load products"
+    });
+}
+
+};
