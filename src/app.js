@@ -1,6 +1,7 @@
 import express from 'express';
 import defaultRouter from './routers/default.routes.js';
 import defaultRouter from './routers/default.routes.js';
+import authRouter from './routers/auth.routes.js'
 
 //configure Express.js app
 const app = express();
@@ -26,5 +27,5 @@ app.use(session({
 
 //routers
 app.use("/", defaultRouter);
-
+app.use("/", defaultRouter);
 export default app;
