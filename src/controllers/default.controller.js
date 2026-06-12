@@ -18,6 +18,7 @@ export const getProducts = async (req, res) => {
     });
 };
 
+// filters products from user
 export const getProductsApi = async (req, res) => {
     try {
         const {category, minPrice } = req.query;
@@ -38,6 +39,7 @@ export const getProductsApi = async (req, res) => {
     }
 }
 
+// handles viewing a product
 export const getProductDetail = async (req, res) => {
     try {
         const product = await fetchProductById(req.params.id);
