@@ -1,5 +1,5 @@
 import express from 'express';
-import defaultRouter from './routers/default.routes.js';
+import session from 'express-session';
 import defaultRouter from './routers/default.routes.js';
 import authRouter from './routers/auth.routes.js'
 
@@ -21,11 +21,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitilized: false,
+    saveUninitialized: false,
     cookie: {secure: false}
 }));
 
 //routers
-app.use("/", defaultRouter);
+app.use("/", authRouter);
 app.use("/", defaultRouter);
 export default app;

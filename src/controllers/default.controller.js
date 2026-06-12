@@ -15,7 +15,9 @@ export const getLogin = (req, res) => {
 
 export const getRegister = (req, res) => {
     res.render("register", {
-        title: "Register"
+        title: "Register",
+        subtitle: '',
+        error: null
     });
 };
 
