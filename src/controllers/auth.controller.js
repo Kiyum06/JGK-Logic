@@ -31,3 +31,10 @@ export const postLogin = async (req, res) => {
         res.render('login', { title: 'Login', subtitle: '', error: err.message });
     }
 };
+
+// Handles logout
+export const postLogout = (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login');
+    });
+};

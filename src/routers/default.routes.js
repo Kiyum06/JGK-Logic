@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { requireAuth, requireAuthApi } from "../utility/default.util.js";
 
 import {
     getHome,
@@ -10,8 +11,8 @@ import {
 const router = Router();
 
 router.get("/", getHome);
-router.get("/products", getProducts);
-router.get("/products/:id", getProductDetail);
-router.get("/api/products",getProductsApi);
+router.get("/products", requireAuth, getProducts);
+router.get("/products/:id", requireAuth, getProductDetail);
+router.get("/api/products", requireAuth, getProductsApi);
 
 export default router;

@@ -335,3 +335,24 @@ nav a,
     border-radius: 10px;
     margin-bottom: 1rem;
 }
+
+button.btn-logout {
+    background: transparent !important;
+    appearance: none;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+}
+
+button.btn-logout:focus {
+    outline: none;
+}
+
+button.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
