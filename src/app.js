@@ -2,6 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import defaultRouter from './routers/default.routes.js';
 import authRouter from './routers/auth.routes.js'
+import cartRouter from "./routers/cart.routes.js";
 
 //configure Express.js app
 const app = express();
@@ -28,4 +29,5 @@ app.use(session({
 //routers
 app.use("/", authRouter);
 app.use("/", defaultRouter);
+app.use("/", cartRouter);
 export default app;
