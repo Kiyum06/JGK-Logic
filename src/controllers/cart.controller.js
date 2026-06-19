@@ -44,3 +44,13 @@ export const removeItemFromCart = (req, res) => {
         data: req.session.cart
     });
 };
+
+export const clearCart = (req, res) => {
+    req.session.cart = [];
+
+    return res.status(200).json({
+        success: true,
+        count: 0,
+        data: []
+    });
+};
