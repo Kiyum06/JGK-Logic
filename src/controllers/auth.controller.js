@@ -25,7 +25,10 @@ export const postLogin = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await loginUser(email, password);
-        req.session.user = user;
+        //req.session.user = user;
+        req.session.userId = user.id;
+        req.session.username = user.username;
+        
         res.redirect('/products');
     } catch (err) {
         res.render('login', { title: 'Login', subtitle: '', error: err.message });

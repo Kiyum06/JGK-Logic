@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <%- include("partials/header") %>
+
+    <main class="container">
+
+        <% if (!product) { %>
+
+            <section class="card">
+                <h2>Product Not Found</h2>
+                <p>This product does not exist.</p>
+
+                <a class="button" href="/products">
+                    Back to Products
+                </a>
+            </section>
+
+        <% } else { %>
+
+            <section class="featured-wide">
+
+                <div class="featured-image">
+                    <img
+                        src="<%= product.image_path || 'https://placehold.co/500x350' %>"
+                        alt="<%= product.name %>"
+                    >
+                </div>
+
+                <div>
+
+                    <span class="badge">Product</span>
+
+                    <h2><%= product.name %></h2>
+
+                    <p class="price">
+                        $<%= product.price %>
+                    </p>
+
+                    <p>
+                        <%= product.description %>
+                    </p>
+
+                    <div class="details">
+
+                        <div>
+                            <small>Category</small>
+                            <strong><%= product.category %></strong>
+                        </div>
+
+                        <div>
+                            <small>Status</small>
+                            <strong>In Stock</strong>
+                        </div>
+
+                        <div>
+                            <small>Product ID</small>
+                            <strong><%= product.id %></strong>
+                        </div>
+
+                    </div>
+
+                    <a class="button" href="/products">
+                        Back to Products
+                    </a>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+    </main>
+
+    <%- include("partials/footer") %>
+
+</body>
+</html>
