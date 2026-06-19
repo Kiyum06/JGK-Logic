@@ -28,7 +28,7 @@ export const postLogin = async (req, res) => {
         //req.session.user = user;
         req.session.userId = user.id;
         req.session.username = user.username;
-        
+
         res.redirect('/products');
     } catch (err) {
         res.render('login', { title: 'Login', subtitle: '', error: err.message });
@@ -38,6 +38,6 @@ export const postLogin = async (req, res) => {
 // Handles logout
 export const postLogout = (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/login');
+        res.redirect('/');
     });
 };
