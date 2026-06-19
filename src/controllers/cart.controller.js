@@ -30,3 +30,17 @@ export const addItemToCart = (req, res) => {
         data: req.session.cart
     });
 };
+
+export const removeItemFromCart = (req, res) => {
+    const { productId } = req.params;
+
+    req.session.cart = (req.session.cart || []).filter(
+        item => item.productId !== Number (productId)
+    );
+
+    return res.status(200).json({
+        success: true,
+        count: req.session.cart.length,
+        data: req.session.cart
+    });
+};
