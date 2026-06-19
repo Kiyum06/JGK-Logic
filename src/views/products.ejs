@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
 
     <main class="container">
         <h2>All Products</h2>
+
         <div class="filters">
             <select id="categoryFilter">
                 <option value="">All Categories</option>
@@ -22,58 +24,70 @@
 
             <button id="filterBtn">Filter</button>
         </div>
-        <!-- loops through all products passed from the controller -->
+
         <div class="product-grid" id="productGrid">
             <% products.forEach(product => { %>
-            <!-- Single product card: repeats for each prodcut in the array -->
                 <div class="product-card">
                     <img src="<%= product.image_path || 'https://placehold.co/300x200?text=No+Image' %>" alt="<%= product.name %>">
+
                     <div class="product-info">
                         <h3><%= product.name %></h3>
                         <p class="price">$<%= product.price %></p>
                         <span class="category-badge"><%= product.category %></span>
                         <p class="description"><%= product.description %></p>
+
                         <a href="/products/<%= product.id %>" class="btn">View product</a>
+
+                        <button class="btn add-cart-btn" data-id="<%= product.id %>">
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             <% }) %>
         </div>
+
+        <section class="cart-box">
+            <h2>Shopping Cart <span id="cartCount">0</span></h2>
+            <div id="cartItems"></div>
+            <p><strong>Subtotal:</strong> $<span id="cartSubtotal">0.00</span></p>
+            <button id="clearCartBtn" class="btn">Clear Cart</button>
+        </section>
     </main>
 
     <%- include('partials/footer') %>
-    
+
     <script>
         document.getElementById("filterBtn").addEventListener("click", async () => {
-
             const category = document.getElementById("categoryFilter").value;
 
-            const response = await fetch(
-                `/api/products?category=${category}`
-            );
-
+            const response = await fetch(`/api/products?category=${category}`);
             const result = await response.json();
 
             const productGrid = document.getElementById("productGrid");
-
             productGrid.innerHTML = "";
 
             result.data.forEach(product => {
-
                 productGrid.innerHTML += `
                     <div class="product-card">
-                        <img src="${product.image_path}" alt="${product.name}">
+                        <img src="${product.image_path || 'https://placehold.co/300x200?text=No+Image'}" alt="${product.name}">
 
                         <div class="product-info">
                             <h3>${product.name}</h3>
                             <p class="price">$${product.price}</p>
                             <span class="category-badge">${product.category}</span>
                             <p class="description">${product.description}</p>
+
                             <a href="/products/${product.id}" class="btn">View product</a>
+
+                            <button class="btn add-cart-btn" data-id="${product.id}">
+                                Add to cart
+                            </button>
                         </div>
                     </div>
                 `;
             });
 
+            attachAddToCartEvents();
         });
 document.querySelectorAll(".addCartBtn").forEach(button => {
         button.addEventListener("click", async () => {
@@ -95,5 +109,7 @@ document.querySelectorAll(".addCartBtn").forEach(button => {
         });
     });
     </script>
+
+    <script src="/js/cart.js"></script>
 </body>
 </html>
